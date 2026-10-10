@@ -260,7 +260,32 @@ hr { border-color:#f1e8ee; }
  .day-cell { font-size:.62rem; padding:6px 1px; }
  .calendar-cell { min-height:48px; padding:3px; }
  .calendar-cell .num,.calendar-cell .mark { font-size:.58rem; }
- div[data-testid="stTabs"] button { font-size:.72rem; padding-left:.4rem; padding-right:.4rem; }
+ div[data-testid="stTabs"] button {
+   font-size:.72rem; padding:.55rem .4rem; color:#8f3e76 !important;
+   background:#fff7fb !important; border-radius:10px 10px 0 0;
+ }
+ div[data-testid="stTabs"] button p { color:#8f3e76 !important; opacity:1 !important; }
+ div[data-testid="stTabs"] button[aria-selected="true"] {
+   color:#b94b94 !important; border-bottom:3px solid #d66fb7 !important;
+   background:#fceaf4 !important;
+ }
+ div[data-testid="stTabs"] button[aria-selected="true"] p { color:#b94b94 !important; font-weight:700 !important; }
+ /* Daily habit grid: preserve one compact row per habit on phones. */
+ div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] div[data-testid="stCheckbox"]) {
+   flex-wrap:nowrap !important; align-items:center !important; gap:.22rem !important;
+   overflow-x:auto !important; padding-bottom:.2rem; scrollbar-width:thin;
+ }
+ div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] div[data-testid="stCheckbox"]) > div[data-testid="column"] {
+   flex:0 0 30px !important; min-width:30px !important; width:30px !important;
+ }
+ div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] div[data-testid="stCheckbox"]) > div[data-testid="column"]:first-child {
+   flex:0 0 112px !important; min-width:112px !important; width:112px !important;
+ }
+ div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] div[data-testid="stCheckbox"]) > div[data-testid="column"]:last-child {
+   flex:0 0 48px !important; min-width:48px !important; width:48px !important;
+ }
+ div[data-testid="stCheckbox"] label { color:#514c4e !important; }
+ div[data-testid="stCheckbox"] [data-testid="stCheckbox"] { margin:0 !important; }
  /* Keep the seven-day checklist in a horizontally scrollable row on phones. */
  div[data-testid="stHorizontalBlock"]:has(div[data-testid="stCheckbox"]) {
    flex-wrap:nowrap !important; overflow-x:auto; gap:.35rem !important;

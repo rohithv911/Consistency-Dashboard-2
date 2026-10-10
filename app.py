@@ -461,4 +461,4 @@ with right:
                 st.markdown(pct_bar(rate * 100) + f'<div style="font-size:.7rem;color:#8b8288;margin-top:4px">{done}/{len(elapsed_month_dates)} days · {rate:.0%}</div>', unsafe_allow_html=True)
 
 st.markdown("<hr>", unsafe_allow_html=True)
-st.markdown('<div style="text-align:center;color:#a99ba4;font-family:\'Playfair Display\',Georgia,serif;font-style:italic;padding:8px;">Be gentle with yourself. Small steps count. ♡</div>', unsafe_allow_html=True)
+st.markdown('<div style="text-align:center;color:#a99ba4;font-family:\'Playfair Display\',Georgia,serif;font-style:italic;padding:8px;">Keep going Ms.Himavarshini. ♡</div>', unsafe_allow_html=True)

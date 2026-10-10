@@ -1,6 +1,7 @@
 import sqlite3
 import calendar
 from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 from pathlib import Path
 import html
 
@@ -11,7 +12,7 @@ DATA_DIR = BASE_DIR / "data"
 DB_PATH = DATA_DIR / "habit_tracker.db"
 
 st.set_page_config(
-    page_title="Habit Tracker",
+    page_title="Habit Bloom",
     page_icon="🌸",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -173,8 +174,8 @@ def pct_bar(value):
 
 
 init_db()
-today = date.today()
-now = datetime.now()
+now = datetime.now(ZoneInfo("Asia/Kolkata"))
+today = now.date()
 habits = get_habits()
 day_labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
@@ -240,11 +241,41 @@ div[data-testid="stProgress"] > div > div { background-color:#d66fb7; }
 div[data-testid="stProgress"] > div { background:#f2edf1; }
 hr { border-color:#f1e8ee; }
 @media (max-width:800px) {
- .block-container { padding:.5rem .75rem 2rem; }
- .hero-banner { margin-left:-.75rem; margin-right:-.75rem; height:145px; }
- .clock-card { min-height:105px; padding:8px 5px; }
- .clock-number { font-size:2.7rem; }
- .hero-banner:before,.hero-banner:after { font-size:1.5rem; width:20%; }
+ .block-container { padding:.35rem .65rem 1.5rem; }
+ .hero-banner { margin-left:-.65rem; margin-right:-.65rem; height:125px; }
+ .banner-title { font-size:3.25rem; }
+ .hero-banner:before,.hero-banner:after { font-size:1.25rem; width:20%; }
+ .vine { font-size:.8rem; letter-spacing:.12rem; }
+ .sticker { margin-top:-27px; margin-left:.35rem; padding:7px 9px; width:70px; font-size:.55rem; }
+ .page-title { font-size:1.3rem; }
+ .reminder { padding:9px 11px; margin-bottom:12px; font-size:.78rem; }
+ .clock-wrap { gap:7px; }
+ .clock-card { min-height:88px; padding:7px 5px; border-radius:12px; }
+ .clock-number { font-size:2.2rem; }
+ .clock-foot { margin-top:8px; font-size:.55rem; }
+ .panel-title { font-size:1.1rem; }
+ .panel-subtitle { font-size:.72rem; }
+ .metric-card { padding:10px; min-height:85px; }
+ .metric-value { font-size:1.5rem; }
+ .day-cell { font-size:.62rem; padding:6px 1px; }
+ .calendar-cell { min-height:48px; padding:3px; }
+ .calendar-cell .num,.calendar-cell .mark { font-size:.58rem; }
+ div[data-testid="stTabs"] button { font-size:.72rem; padding-left:.4rem; padding-right:.4rem; }
+ /* Keep the seven-day checklist in a horizontally scrollable row on phones. */
+ div[data-testid="stHorizontalBlock"]:has(div[data-testid="stCheckbox"]) {
+   flex-wrap:nowrap !important; overflow-x:auto; gap:.35rem !important;
+   padding-bottom:.35rem; scrollbar-width:thin;
+ }
+ div[data-testid="stHorizontalBlock"]:has(div[data-testid="stCheckbox"]) > div[data-testid="column"] {
+   min-width:42px !important; flex:0 0 auto !important;
+ }
+ div[data-testid="stHorizontalBlock"]:has(div[data-testid="stCheckbox"]) > div[data-testid="column"]:first-child {
+   min-width:115px !important;
+ }
+ div[data-testid="stHorizontalBlock"]:has(div[data-testid="stCheckbox"]) > div[data-testid="column"]:last-child {
+   min-width:55px !important;
+ }
+ div[data-testid="stCheckbox"] { padding:2px 0; }
 }
 </style>
 """, unsafe_allow_html=True)
@@ -252,11 +283,11 @@ hr { border-color:#f1e8ee; }
 st.markdown("""
 <div class="hero-banner">
   <div class="vine left">❧<br>✧　❀<br>　❧　✿<br>✧　❀<br>　❧</div>
-  <div class="banner-title">Habit Tracker</div>
+  <div class="banner-title">Habit Bloom</div>
   <div class="vine right">❀　✧<br>　❧<br>✿　❀<br>　✧　❧<br>❀</div>
 </div>
 <div class="sticker">BE GENTLE<br>WITH<br>YOURSELF ♡</div>
-<div class="page-title">Habit Tracker</div>
+<div class="page-title">Your little space to bloom 🌸</div>
 <div class="reminder">☁️ &nbsp; Daily Reminder: Drink water!</div>
 """, unsafe_allow_html=True)
 
@@ -461,4 +492,4 @@ with right:
                 st.markdown(pct_bar(rate * 100) + f'<div style="font-size:.7rem;color:#8b8288;margin-top:4px">{done}/{len(elapsed_month_dates)} days · {rate:.0%}</div>', unsafe_allow_html=True)
 
 st.markdown("<hr>", unsafe_allow_html=True)
-st.markdown('<div style="text-align:center;color:#a99ba4;font-family:\'Playfair Display\',Georgia,serif;font-style:italic;padding:8px;">Keep going Ms.Himavarshini. ♡</div>', unsafe_allow_html=True)
+st.markdown("<div style=\"text-align:center;color:#a99ba4;font-family:'Playfair Display',Georgia,serif;font-style:italic;padding:8px;\">Keep going Ms.Himavarshini. 💗 ♡</div>", unsafe_allow_html=True)

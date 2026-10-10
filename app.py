@@ -240,135 +240,105 @@ div[data-testid="stTextInput"] input { border-color:#eed9e5; border-radius:6px; 
 div[data-testid="stProgress"] > div > div { background-color:#d66fb7; }
 div[data-testid="stProgress"] > div { background:#f2edf1; }
 hr { border-color:#f1e8ee; }
-@media (max-width: 800px) {
-  .block-container { padding: .35rem .55rem 1.5rem !important; }
-  .hero-banner { margin-left: -.55rem; margin-right: -.55rem; height: 118px; }
-  .banner-title { font-size: 3rem; }
-  .hero-banner:before, .hero-banner:after { font-size: 1.1rem; width: 22%; }
-  .vine { font-size: .75rem; letter-spacing: .08rem; }
-  .sticker { margin-top: -24px; margin-left: .25rem; padding: 6px 8px; width: 68px; font-size: .52rem; }
-  .page-title { font-size: 1.22rem; }
-  .reminder { padding: 9px 10px; margin: 6px 0 12px; font-size: .78rem; }
-  .clock-wrap { gap: 7px; }
-  .clock-card { min-height: 78px; padding: 6px 5px; border-radius: 11px; }
-  .clock-number { font-size: 2.15rem; }
-  .clock-foot { margin-top: 7px; font-size: .52rem; }
-  .panel-title { font-size: 1.08rem; }
-  .panel-subtitle { font-size: .72rem; }
-  .metric-card { padding: 9px; min-height: 78px; }
-  .metric-label, .metric-caption { font-size: .66rem; }
-  .metric-value { font-size: 1.35rem; }
-  .day-cell { font-size: .58rem; padding: 5px 1px; }
-  .calendar-cell { min-height: 43px; padding: 3px; }
-  .calendar-cell .num, .calendar-cell .mark { font-size: .53rem; }
+@media (max-width:800px) {
+ .block-container { padding:.35rem .55rem 1.5rem; }
 
-  /* Make the top-level desktop columns stack: clock/tasks/glance first, tracker second. */
-  div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] .clock-wrap) {
-    display: flex !important;
-    flex-direction: column !important;
-    flex-wrap: nowrap !important;
-    gap: .55rem !important;
-  }
-  div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] .clock-wrap) > div[data-testid="column"] {
-    width: 100% !important;
-    min-width: 0 !important;
-    flex: 1 1 100% !important;
-  }
+ /* Stack the desktop sidebar and main panel vertically on phones.
+    The main tracker then receives the full screen width. */
+ div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] .clock-wrap) {
+   display:flex !important;
+   flex-wrap:wrap !important;
+   gap:.6rem !important;
+   overflow:visible !important;
+ }
+ div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] .clock-wrap)
+   > div[data-testid="column"] {
+   flex:1 1 100% !important;
+   width:100% !important;
+   min-width:100% !important;
+ }
+ /* Keep all three navigation tabs visible and readable. */
+ div[data-testid="stTabs"] [role="tablist"] {
+   display:flex !important;
+   width:100% !important;
+   gap:.2rem !important;
+ }
+ div[data-testid="stTabs"] button {
+   flex:1 1 0 !important;
+   min-width:0 !important;
+   white-space:normal !important;
+ }
+ .hero-banner { margin-left:-.65rem; margin-right:-.65rem; height:125px; }
+ .banner-title { font-size:3.25rem; }
+ .hero-banner:before,.hero-banner:after { font-size:1.25rem; width:20%; }
+ .vine { font-size:.8rem; letter-spacing:.12rem; }
+ .sticker { margin-top:-27px; margin-left:.35rem; padding:7px 9px; width:70px; font-size:.55rem; }
+ .page-title { font-size:1.3rem; }
+ .reminder { padding:9px 11px; margin-bottom:12px; font-size:.78rem; }
+ .clock-wrap { gap:7px; }
+ .clock-card { min-height:88px; padding:7px 5px; border-radius:12px; }
+ .clock-number { font-size:2.2rem; }
+ .clock-foot { margin-top:8px; font-size:.55rem; }
+ .panel-title { font-size:1.1rem; }
+ .panel-subtitle { font-size:.72rem; }
+ .metric-card { padding:10px; min-height:85px; }
+ .metric-value { font-size:1.5rem; }
+ /* Keep summaries compact without crushing the text on phones. */
+ div[data-testid="stHorizontalBlock"]:has(.metric-card) {
+   gap:.35rem !important;
+ }
+ .metric-card { overflow-wrap:anywhere; }
 
-  /* Keep the three navigation tabs readable on the white background. */
-  div[data-testid="stTabs"] > div[role="tablist"] {
-    gap: .2rem !important;
-    border-bottom: 1px solid #efd4e4 !important;
-  }
-  div[data-testid="stTabs"] button[role="tab"] {
-    flex: 1 1 0 !important;
-    min-width: 0 !important;
-    padding: .55rem .2rem !important;
-    white-space: normal !important;
-    color: #9d3f7d !important;
-    background: #fff4fa !important;
-    border-radius: 9px 9px 0 0 !important;
-    font-size: .68rem !important;
-  }
-  div[data-testid="stTabs"] button[role="tab"] p,
-  div[data-testid="stTabs"] button[role="tab"] div {
-    color: #9d3f7d !important;
-    opacity: 1 !important;
-  }
-  div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
-    color: #8f2e6c !important;
-    background: #f8ddec !important;
-    border-bottom: 3px solid #c6539d !important;
-    font-weight: 700 !important;
-  }
-  div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] p {
-    color: #8f2e6c !important;
-    font-weight: 700 !important;
-  }
-
-  /* The weekly table is a single horizontal grid; scroll sideways on narrow phones. */
-  div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] div[data-testid="stCheckbox"]) {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: .15rem !important;
-    width: 100% !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    padding: 2px 0 8px !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-  }
-  div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] div[data-testid="stCheckbox"]) > div[data-testid="column"] {
-    flex: 0 0 36px !important;
-    width: 36px !important;
-    min-width: 36px !important;
-  }
-  div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] div[data-testid="stCheckbox"]) > div[data-testid="column"]:first-child {
-    flex: 0 0 138px !important;
-    width: 138px !important;
-    min-width: 138px !important;
-  }
-  div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] div[data-testid="stCheckbox"]) > div[data-testid="column"]:last-child {
-    flex: 0 0 56px !important;
-    width: 56px !important;
-    min-width: 56px !important;
-  }
-
-  /* Match the table heading widths to the checkbox rows. */
-  div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] .table-head) {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    gap: .15rem !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    padding-bottom: 5px !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-  }
-  div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] .table-head) > div[data-testid="column"] {
-    flex: 0 0 36px !important;
-    width: 36px !important;
-    min-width: 36px !important;
-  }
-  div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] .table-head) > div[data-testid="column"]:first-child {
-    flex: 0 0 138px !important;
-    width: 138px !important;
-    min-width: 138px !important;
-  }
-  div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] .table-head) > div[data-testid="column"]:last-child {
-    flex: 0 0 56px !important;
-    width: 56px !important;
-    min-width: 56px !important;
-  }
-  div[data-testid="stCheckbox"] { padding: 2px 0 !important; margin: 0 !important; }
-  div[data-testid="stCheckbox"] label { color: #514c4e !important; }
-  .habit-name { font-size: .72rem; line-height: 1.25; overflow-wrap: anywhere; }
-  .table-head { font-size: .65rem; }
-  .stButton button { min-height: 2.4rem; }
+ .day-cell { font-size:.62rem; padding:6px 1px; }
+ .calendar-cell { min-height:48px; padding:3px; }
+ .calendar-cell .num,.calendar-cell .mark { font-size:.58rem; }
+ div[data-testid="stTabs"] button {
+   font-size:.72rem; padding:.55rem .4rem; color:#8f3e76 !important;
+   background:#fff7fb !important; border-radius:10px 10px 0 0;
+ }
+ div[data-testid="stTabs"] button p { color:#8f3e76 !important; opacity:1 !important; }
+ div[data-testid="stTabs"] button[aria-selected="true"] {
+   color:#b94b94 !important; border-bottom:3px solid #d66fb7 !important;
+   background:#fceaf4 !important;
+ }
+ div[data-testid="stTabs"] button[aria-selected="true"] p { color:#b94b94 !important; font-weight:700 !important; }
+ /* Weekly checklist: each habit remains a single row. Swipe horizontally
+    to see all seven days on a narrow phone screen. */
+ div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] div[data-testid="stCheckbox"]) {
+   display:flex !important;
+   flex-wrap:nowrap !important;
+   align-items:center !important;
+   gap:.25rem !important;
+   overflow-x:auto !important;
+   overflow-y:hidden !important;
+   padding: .15rem 0 .45rem !important;
+   scrollbar-width:thin;
+   -webkit-overflow-scrolling:touch;
+ }
+ div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] div[data-testid="stCheckbox"])
+   > div[data-testid="column"] {
+   flex:0 0 38px !important;
+   min-width:38px !important;
+   width:38px !important;
+ }
+ div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] div[data-testid="stCheckbox"])
+   > div[data-testid="column"]:first-child {
+   flex:0 0 132px !important;
+   min-width:132px !important;
+   width:132px !important;
+   position:sticky;
+   left:0;
+   z-index:2;
+   background:#fff !important;
+ }
+ div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"] div[data-testid="stCheckbox"])
+   > div[data-testid="column"]:last-child {
+   flex:0 0 58px !important;
+   min-width:58px !important;
+   width:58px !important;
+ }
+ div[data-testid="stCheckbox"] label { color:#514c4e !important; }
+ div[data-testid="stCheckbox"] { padding:2px 0; }
 }
 </style>
 """, unsafe_allow_html=True)
